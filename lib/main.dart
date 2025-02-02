@@ -1,138 +1,252 @@
 import 'package:flutter/material.dart';
 void main(){
-  runApp(
-    MaterialApp(
-      title: 'hello',
-      home: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.purple,
-          title: Text('flutter devoloper'),
-          centerTitle: true,
-        ),
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              Center(
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.green,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
-                  onPressed: (){
-                    print('click me');
-                  },
-                  child:
-                  Text('Send',
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),),
-
-
-                ),
-              ),
-              Icon(Icons.add_a_photo,size: 50,color: Colors.red,),
-              TextButton(onPressed: (){
-                print('jala ontor jala');
-              }, child: Text('Click me ',style: TextStyle(
-                color: Colors.blue,
-                fontSize: 25,
-              ),)),
-              IconButton(onPressed: (){
-                print('This is icon button');
-              }, icon: Icon(Icons.add_a_photo,size: 50,color: Colors.red,)),
-
-
-              InkWell(
-                onTap: (){
-                  print("i am inkweel");
-                },
-
-
-
-                child: Container(
-
-                  height: 200,
-                  width: 200,
-                  margin: EdgeInsets.only(top: 50),
-                  padding: EdgeInsets.all(20),
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    color: Colors.pink,
-                    borderRadius: BorderRadius.circular(15),
-                    gradient: LinearGradient(colors:[
-                      Colors.orange,
-                      Colors.redAccent,
-                      Colors.red,
-                    ] ),
-                    border: Border.all(color: Colors.green),
-                    boxShadow:[
-                      BoxShadow(
-                        color: Colors.grey,
-                        blurRadius: 10,
-                        offset:Offset (5,5),
-                        spreadRadius: 5,
-                      ) ,
-                    ],
-                  ),
-
-                  child: Text('This is a Container',
-                    style: TextStyle(color: Colors.white,
-                        fontSize: 25,
-                        fontWeight: FontWeight.bold),),
-                ),
-              ),
-
-              GestureDetector(
-                onTap: (){
-                  print("i am GestureDetector");
-                },
-
-
-
-                child: Container(
-
-                  height: 200,
-                  width: 200,
-                  margin: EdgeInsets.only(top: 50),
-                  padding: EdgeInsets.all(20),
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    color: Colors.pink,
-                    borderRadius: BorderRadius.circular(15),
-                    gradient: LinearGradient(colors:[
-                      Colors.orange,
-                      Colors.redAccent,
-                      Colors.red,
-                    ] ),
-                    border: Border.all(color: Colors.green),
-                    boxShadow:[
-                      BoxShadow(
-                        color: Colors.grey,
-                        blurRadius: 10,
-                        offset:Offset (5,5),
-                        spreadRadius: 5,
-                      ) ,
-                    ],
-                  ),
-
-                  child: Text('This is a Container',
-                    style: TextStyle(color: Colors.white,
-                        fontSize: 25,
-                        fontWeight: FontWeight.bold),),
-                ),
-              ),
-            ],
-          ),
-        ),
-
-
-
-      ),
-    ),
-
-
-  );
+  runApp(MyApp());
 }
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Ostaed Flutter app',
+      home: Home(),
+    );
+  }
+}
+
+class Home extends StatelessWidget {
+  const Home({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    TextEditingController _numberControler = TextEditingController();
+    TextEditingController _emailControler = TextEditingController();
+    TextEditingController _passwordControler = TextEditingController();
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.blue,
+        title: Text('Flutter App'),
+        centerTitle: true,
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(left: 20,right: 20,top: 20),
+              child: TextField(
+                controller: _numberControler,
+                keyboardType: TextInputType.number,
+                decoration: InputDecoration(
+                  filled: false,
+                  fillColor: Colors.amber,
+                  hintText: "Enter your number",
+                  hintStyle: TextStyle(
+                    fontSize: 25,
+                    color: Colors.black,
+                  ),
+                  labelText: "Number",
+                  labelStyle:  TextStyle(
+                    fontSize: 25,
+                    color: Colors.blue,
+                  ),
+                  hintMaxLines: 3,
+                  helperText: "Please Enter Your Number",
+                  helperStyle: TextStyle(fontSize: 18,color: Colors.green),
+                  helperMaxLines: 1,
+                  // prefixText: "Email:",
+                  //suffixText: "@gmail.com",
+        
+        
+        
+                  prefixIcon: Icon(Icons.phone),
+                  suffixIcon: Icon(Icons.send),
+        
+                  border: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.amber,width: 5),
+                    borderRadius: BorderRadius.only(
+        
+                        topLeft:Radius.circular(20),
+                        bottomRight: Radius.circular(20)),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.green,width: 5),
+                    borderRadius: BorderRadius.only(
+        
+                        topLeft:Radius.circular(20),
+                        bottomRight: Radius.circular(20)),
+                  ),
+                ),
+              ),
+            ),
+         Padding(
+           padding: const EdgeInsets.only(left: 20,right: 20,top: 20),
+           child: TextField(
+             controller: _emailControler,
+             decoration: InputDecoration(
+               filled: false,
+               fillColor: Colors.amber,
+               hintText: "Enter your mail",
+               hintStyle: TextStyle(
+                 fontSize: 25,
+                 color: Colors.black,
+               ),
+               labelText: "Email",
+                labelStyle:  TextStyle(
+                  fontSize: 25,
+                  color: Colors.blue,
+                ),
+                hintMaxLines: 3,
+               helperText: "Please Enter Your email",
+               helperStyle: TextStyle(fontSize: 18,color: Colors.green),
+               helperMaxLines: 1,
+              // prefixText: "Email:",
+               //suffixText: "@gmail.com",
+        
+        
+        
+               prefixIcon: Icon(Icons.email),
+               suffixIcon: Icon(Icons.send),
+        
+               border: OutlineInputBorder(
+                 borderSide: BorderSide(color: Colors.amber,width: 5),
+                 borderRadius: BorderRadius.only(
+        
+                     topLeft:Radius.circular(20),
+                     bottomRight: Radius.circular(20)),
+               ),
+               enabledBorder: OutlineInputBorder(
+                 borderSide: BorderSide(color: Colors.amber,width: 5),
+                 borderRadius: BorderRadius.only(
+        
+                     topLeft:Radius.circular(20),
+                     bottomRight: Radius.circular(20)),
+               ),
+             ),
+           ),
+         ),
+        
+            Padding(
+              padding: const EdgeInsets.only(left: 20,right: 20,top: 20),
+              child: TextField(
+                controller: _passwordControler,
+                obscureText: true,
+                decoration: InputDecoration(
+                  filled: false,
+                  fillColor: Colors.amber,
+                  hintText: "Enter your Password",
+                  hintStyle: TextStyle(
+                    fontSize: 25,
+                    color: Colors.black,
+                  ),
+                  labelText: "Password",
+                  labelStyle:  TextStyle(
+                    fontSize: 25,
+                    color: Colors.blue,
+                  ),
+                  hintMaxLines: 3,
+                  helperText: "Please Enter Your Password",
+                  helperStyle: TextStyle(fontSize: 18,color: Colors.green),
+                  helperMaxLines: 1,
+                  // prefixText: "Email:",
+                  //suffixText: "@gmail.com",
+        
+        
+        
+                  prefixIcon: Icon(Icons.email),
+                  suffixIcon: Icon(Icons.send),
+        
+                  border: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.amber,width: 5),
+                    borderRadius: BorderRadius.only(
+        
+                        topLeft:Radius.circular(20),
+                        bottomRight: Radius.circular(20)),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.green,width: 5),
+                    borderRadius: BorderRadius.only(
+        
+                        topLeft:Radius.circular(20),
+                        bottomRight: Radius.circular(20)),
+                  ),
+                ),
+              ),
+            ),
+        
+            ElevatedButton(onPressed: (){
+              print(_numberControler.text);
+              print('${_emailControler.text}gmail.com');
+              print(_passwordControler.text);
+            }, child: Text("Submit")
+            ),
+            ElevatedButton(onPressed: (){
+              _numberControler.clear();
+              _emailControler.clear();
+              _passwordControler.clear();
+        
+            },
+                child: Text("Clear")),
+            Text('Astagfirullah ',
+              style: TextStyle(fontSize: 25,color: Colors.blue),
+
+            ),
+            Divider(color: Colors.orange,),
+            Text('Alhamdulliah ',style: TextStyle(fontSize: 25,color: Colors.deepPurple)),
+            ListTile(
+              title:Text('Software Enginner') ,
+              subtitle: Text("Flutter devoloper"),
+              leading: Icon(Icons.account_circle,size: 50,),
+              trailing: Icon(Icons.send),
+              onTap: (){
+                print('this is list title');
+              },
+              onLongPress: (){
+                print('also list title');
+              },
+        
+            ),
+
+            SizedBox(
+
+              width: double.infinity,
+              child: ElevatedButton(
+                onPressed: () {},
+                style: ElevatedButton.styleFrom(backgroundColor: Colors.green),
+                child: Text("Click me"),
+              ),
+            ),
+          SizedBox(
+            height: 250,
+            width: 250,
+            child:   ListView.builder(
+                itemCount: 15,
+                itemBuilder: (BuildContext, index){
+                  return ListTile(
+                    title:Text('Shad islam ${index+1}') ,
+                    subtitle: Text("Flutter devoloper"),
+                    leading: Icon(Icons.account_circle,size: 50,),
+                    trailing: Icon(Icons.send),
+                    onTap: (){
+                      print('this is list title');
+                    },
+                    onLongPress: (){
+                      print('also list title');
+                    },
+        
+                  );
+        
+                }
+            ),
+          ),
+
+
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+
 
