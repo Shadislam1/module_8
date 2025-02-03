@@ -1,13 +1,6 @@
+
 import 'package:flutter/material.dart';
-
-import 'MyApp.dart';
-void main(){
-  runApp(MyApp());
-}
-
-
-
-
+import 'package:module_8/Home.dart';
 
 class UserInfo extends StatelessWidget {
   final String name;
@@ -30,7 +23,7 @@ class UserInfo extends StatelessWidget {
           ),
           ElevatedButton(
               onPressed: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context) =>UserInfo(name: name)));
+                // Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));
               }, child: Text("Page")
           ),
 
@@ -39,8 +32,3 @@ class UserInfo extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
