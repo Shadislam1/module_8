@@ -9,6 +9,22 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(
+        primaryColor: Colors.red,
+        appBarTheme: AppBarTheme(
+          color: Colors.red,
+          centerTitle: true,
+        ),
+        scaffoldBackgroundColor: Colors.grey,
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.deepPurple,
+            foregroundColor: Colors.white
+          ),
+
+        ),
+
+      ),
       title: 'Ostaed Flutter app',
       home: Home(),
     );
@@ -23,230 +39,164 @@ class Home extends StatelessWidget {
     TextEditingController _numberControler = TextEditingController();
     TextEditingController _emailControler = TextEditingController();
     TextEditingController _passwordControler = TextEditingController();
+    final _formKey = GlobalKey<FormState>();
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blue,
+
         title: Text('Flutter App'),
         centerTitle: true,
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 20,right: 20,top: 20),
-              child: TextField(
-                controller: _numberControler,
-                keyboardType: TextInputType.number,
-                decoration: InputDecoration(
-                  filled: false,
-                  fillColor: Colors.amber,
-                  hintText: "Enter your number",
-                  hintStyle: TextStyle(
-                    fontSize: 25,
-                    color: Colors.black,
+      body: Column(
+        children: [
+          Form(
+            key: _formKey,
+              child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: TextFormField(
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    hintText: "Email",
+                    label:Text(" Email"),
                   ),
-                  labelText: "Number",
-                  labelStyle:  TextStyle(
-                    fontSize: 25,
-                    color: Colors.blue,
-                  ),
-                  hintMaxLines: 3,
-                  helperText: "Please Enter Your Number",
-                  helperStyle: TextStyle(fontSize: 18,color: Colors.green),
-                  helperMaxLines: 1,
-                  // prefixText: "Email:",
-                  //suffixText: "@gmail.com",
-        
-        
-        
-                  prefixIcon: Icon(Icons.phone),
-                  suffixIcon: Icon(Icons.send),
-        
-                  border: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.amber,width: 5),
-                    borderRadius: BorderRadius.only(
-        
-                        topLeft:Radius.circular(20),
-                        bottomRight: Radius.circular(20)),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.green,width: 5),
-                    borderRadius: BorderRadius.only(
-        
-                        topLeft:Radius.circular(20),
-                        bottomRight: Radius.circular(20)),
-                  ),
+                  validator: (value){
+                    if(value == null || value.isEmpty){
+                      return "Empty email not allow";
+                    }
+                    return null;
+                  },
                 ),
               ),
-            ),
-         Padding(
-           padding: const EdgeInsets.only(left: 20,right: 20,top: 20),
-           child: TextField(
-             controller: _emailControler,
-             decoration: InputDecoration(
-               filled: false,
-               fillColor: Colors.amber,
-               hintText: "Enter your mail",
-               hintStyle: TextStyle(
-                 fontSize: 25,
-                 color: Colors.black,
-               ),
-               labelText: "Email",
-                labelStyle:  TextStyle(
-                  fontSize: 25,
-                  color: Colors.blue,
-                ),
-                hintMaxLines: 3,
-               helperText: "Please Enter Your email",
-               helperStyle: TextStyle(fontSize: 18,color: Colors.green),
-               helperMaxLines: 1,
-              // prefixText: "Email:",
-               //suffixText: "@gmail.com",
-        
-        
-        
-               prefixIcon: Icon(Icons.email),
-               suffixIcon: Icon(Icons.send),
-        
-               border: OutlineInputBorder(
-                 borderSide: BorderSide(color: Colors.amber,width: 5),
-                 borderRadius: BorderRadius.only(
-        
-                     topLeft:Radius.circular(20),
-                     bottomRight: Radius.circular(20)),
-               ),
-               enabledBorder: OutlineInputBorder(
-                 borderSide: BorderSide(color: Colors.amber,width: 5),
-                 borderRadius: BorderRadius.only(
-        
-                     topLeft:Radius.circular(20),
-                     bottomRight: Radius.circular(20)),
-               ),
-             ),
-           ),
-         ),
-        
-            Padding(
-              padding: const EdgeInsets.only(left: 20,right: 20,top: 20),
-              child: TextField(
-                controller: _passwordControler,
-                obscureText: true,
-                decoration: InputDecoration(
-                  filled: false,
-                  fillColor: Colors.amber,
-                  hintText: "Enter your Password",
-                  hintStyle: TextStyle(
-                    fontSize: 25,
-                    color: Colors.black,
+              SizedBox(
+                height: 20,
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: TextFormField(
+                  obscureText: true,
+                  decoration: InputDecoration(
+
+                    border: OutlineInputBorder(),
+                    hintText: "Password",
+                    label:Text(" Password"),
                   ),
-                  labelText: "Password",
-                  labelStyle:  TextStyle(
-                    fontSize: 25,
-                    color: Colors.blue,
-                  ),
-                  hintMaxLines: 3,
-                  helperText: "Please Enter Your Password",
-                  helperStyle: TextStyle(fontSize: 18,color: Colors.green),
-                  helperMaxLines: 1,
-                  // prefixText: "Email:",
-                  //suffixText: "@gmail.com",
-        
-        
-        
-                  prefixIcon: Icon(Icons.email),
-                  suffixIcon: Icon(Icons.send),
-        
-                  border: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.amber,width: 5),
-                    borderRadius: BorderRadius.only(
-        
-                        topLeft:Radius.circular(20),
-                        bottomRight: Radius.circular(20)),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.green,width: 5),
-                    borderRadius: BorderRadius.only(
-        
-                        topLeft:Radius.circular(20),
-                        bottomRight: Radius.circular(20)),
-                  ),
+                  validator: (value){
+                    if(value == null || value.isEmpty || value.length<6){
+                      return "pasword must be length 6";
+                    }
+                    return null;
+                  },
                 ),
               ),
-            ),
-        
-            ElevatedButton(onPressed: (){
-              print(_numberControler.text);
-              print('${_emailControler.text}gmail.com');
-              print(_passwordControler.text);
-            }, child: Text("Submit")
-            ),
-            ElevatedButton(onPressed: (){
-              _numberControler.clear();
-              _emailControler.clear();
-              _passwordControler.clear();
-        
-            },
-                child: Text("Clear")),
-            Text('Astagfirullah ',
-              style: TextStyle(fontSize: 25,color: Colors.blue),
-
-            ),
-            Divider(color: Colors.orange,),
-            Text('Alhamdulliah ',style: TextStyle(fontSize: 25,color: Colors.deepPurple)),
-            ListTile(
-              title:Text('Software Enginner') ,
-              subtitle: Text("Flutter devoloper"),
-              leading: Icon(Icons.account_circle,size: 50,),
-              trailing: Icon(Icons.send),
-              onTap: (){
-                print('this is list title');
-              },
-              onLongPress: (){
-                print('also list title');
-              },
-        
-            ),
-
-            SizedBox(
-
-              width: double.infinity,
-              child: ElevatedButton(
-                onPressed: () {},
-                style: ElevatedButton.styleFrom(backgroundColor: Colors.green),
-                child: Text("Click me"),
+              SizedBox(height: 20,),
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                    onPressed: (){
+                     if( _formKey.currentState!.validate()){
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => UserInfo()));
+                     }
+                    },
+                  style: ElevatedButton.styleFrom(backgroundColor: Colors.green),
+                    child:Text("submit"),
+                ),
               ),
-            ),
+
+            ],
+          )),
           SizedBox(
-            height: 250,
-            width: 250,
-            child:   ListView.builder(
-                itemCount: 15,
-                itemBuilder: (BuildContext, index){
-                  return ListTile(
-                    title:Text('Shad islam ${index+1}') ,
-                    subtitle: Text("Flutter devoloper"),
-                    leading: Icon(Icons.account_circle,size: 50,),
-                    trailing: Icon(Icons.send),
-                    onTap: (){
-                      print('this is list title');
-                    },
-                    onLongPress: (){
-                      print('also list title');
-                    },
-        
+            height: 300,
+            child: GridView.builder(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 4,
+                  crossAxisSpacing: 30,
+                  mainAxisSpacing: 20,
+                ),
+                itemCount: 7,
+                itemBuilder: (context,index){
+                  return Container(
+                    decoration: BoxDecoration(
+                      color: Colors.red,
+                      borderRadius: BorderRadius.circular(25),
+                    ),
+
+                    child: Column(
+                      children: [
+                        Center(
+                          child: Icon(
+                            Icons.mobile_friendly,size: 40,
+                            color: Colors.white,
+                          )
+                        ),
+                        Text(" Text $index"),
+                      ],
+                    )
+
                   );
-        
                 }
-            ),
+                ),
+          )
+        ],
+      ),
+      floatingActionButton: FloatingActionButton.extended(onPressed: (){
+        print("this is floating action button");
+      }, label: Text("add me")),
+    );
+  }
+}
+
+class UserInfo extends StatelessWidget {
+  const UserInfo({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+
+        title: Text("Page 1"),
+      ),
+      body: Column(
+        children: [
+          ElevatedButton(
+              onPressed: (){
+                Navigator.pop(context);
+              }, child: Text("Back")
+          ),
+          ElevatedButton(
+              onPressed: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context) => Page_1()));
+              }, child: Text("Page")
           ),
 
-
-          ],
-        ),
+        ],
       ),
     );
   }
 }
 
 
+
+class Page_1 extends StatelessWidget {
+  const Page_1({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.amber,
+        title: Text("Page "),
+      ),
+      body: Column(
+        children: [
+          ElevatedButton(
+              onPressed: (){
+                Navigator.pop(context);
+              }, child: Text("Back")
+          ),
+        ],
+      ),
+    );
+  }
+}
 
