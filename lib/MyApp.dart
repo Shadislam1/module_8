@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:module_8/Module9class_1.dart';
+import 'package:module_8/Module9class_2.dart';
 
 import 'Home.dart';
 import 'main.dart';
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
 
       ),
       title: 'Ostaed Flutter app',
-      home:layoutBuilder(),
+      home:Module9class2(),
     );
   }
 }
