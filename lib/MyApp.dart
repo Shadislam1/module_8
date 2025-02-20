@@ -1,6 +1,7 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:module_8/Calculatorapp.dart';
 import 'package:module_8/Module9class_1.dart';
 import 'package:module_8/Module9class_2.dart';
 import 'package:module_8/Watertracker.dart';
@@ -31,7 +32,7 @@ class MyApp extends StatelessWidget {
 
       ),
       title: 'Ostaed Flutter app',
-      home:Watertracker(),
+      home:Calculatorapp(),
     );
   }
 }
