@@ -5,6 +5,7 @@ import 'package:module_8/Calculatorapp.dart';
 import 'package:module_8/Module9class_1.dart';
 import 'package:module_8/Module9class_2.dart';
 import 'package:module_8/Watertracker.dart';
+import 'package:module_8/module_12_class_1.dart';
 
 import 'Home.dart';
 import 'main.dart';
@@ -15,13 +16,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        brightness: Brightness.dark,
         primaryColor: Colors.red,
         appBarTheme: AppBarTheme(
           color: Colors.red,
           centerTitle: true,
         ),
-        scaffoldBackgroundColor: Colors.grey,
+        //scaffoldBackgroundColor: Colors.grey,
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
               backgroundColor: Colors.deepPurple,
@@ -32,7 +35,7 @@ class MyApp extends StatelessWidget {
 
       ),
       title: 'Ostaed Flutter app',
-      home:Calculatorapp(),
+      home: ExpanseTracker(),
     );
   }
 }
