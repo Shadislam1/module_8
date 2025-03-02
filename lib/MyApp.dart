@@ -6,6 +6,7 @@ import 'package:module_8/Module9class_1.dart';
 import 'package:module_8/Module9class_2.dart';
 import 'package:module_8/Watertracker.dart';
 import 'package:module_8/module_12_class_1.dart';
+import 'package:module_8/module_12_class_2.dart';
 
 import 'Home.dart';
 import 'main.dart';
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
         brightness: Brightness.dark,
         primaryColor: Colors.red,
         appBarTheme: AppBarTheme(
-          color: Colors.red,
+          color: Colors.blue,
           centerTitle: true,
         ),
         //scaffoldBackgroundColor: Colors.grey,
@@ -35,7 +36,7 @@ class MyApp extends StatelessWidget {
 
       ),
       title: 'Ostaed Flutter app',
-      home: ExpanseTracker(),
+      home:TodoScreen(),
     );
   }
 }
