@@ -87,6 +87,7 @@ class _TodoScreenState extends State<TodoScreen> {
   int get completedCount => tasks.where((task) => task['completed']).length;
   @override
   Widget build(BuildContext context) {
+    List<Map<String, dynamic>> filterTask = tasks.where((task) => task['completed'] != showActiveTask).toList();
     return Scaffold(
       appBar: AppBar(
         title: Text('Todo App'),
@@ -101,61 +102,76 @@ class _TodoScreenState extends State<TodoScreen> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Container(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(color: Colors.black12,blurRadius: 4),
-                    ],
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Column(
-                      children: [
-                        Text('Active ',
-                          style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black),
-                        ),
-                        Text( activeCount.toString(),
-                          style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.w500,
-                              color: Colors.black),
-                        ),
+                InkWell(
+                  onTap: (){
+                    setState(() {
+                      showActiveTask = false;
+                    });
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                      boxShadow: [
+                        BoxShadow(color: Colors.black12,blurRadius: 4),
                       ],
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Column(
+                        children: [
+                          Text('Active ',
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                          ),
+                          Text( activeCount.toString(),
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.w500,
+                                color: Colors.black),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
 
-                Container(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(color: Colors.black12,blurRadius: 4),
-                    ],
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Column(
-                      children: [
-                        Text('Complete ',
-                          style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black),
-                        ),
+                InkWell(
+                  onTap: (){
+                    setState(() {
+                      showActiveTask = true;
+                    });
+                  },
+                  child: Container(
 
-                        Text(completedCount.toString() ,
-                          style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.w500,
-                              color: Colors.black),
-                        ),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                      boxShadow: [
+                        BoxShadow(color: Colors.black12,blurRadius: 4),
                       ],
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Column(
+                        children: [
+                          Text('Complete ',
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                          ),
+
+                          Text(completedCount.toString() ,
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.w500,
+                                color: Colors.black),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -166,9 +182,9 @@ class _TodoScreenState extends State<TodoScreen> {
 
           Expanded(
             child: ListView.builder(
-              itemCount: tasks.length,
+              itemCount: filterTask.length,
                 itemBuilder: (context,index ){
-               // print( tasks[index]['task']);
+                print( filterTask[index]['task']);
                 return Dismissible(
                   key: Key(UniqueKey().toString()),
                   background: Container(
@@ -196,15 +212,16 @@ class _TodoScreenState extends State<TodoScreen> {
                   },
                   child: Card(
                     child: ListTile(
-                      title: Text(tasks[index]['task'],
+                      title: Text(
+                        filterTask[index]['task'],
                       style: TextStyle(
                         fontSize: 16,
-                        decoration: tasks[index]['completed'] ? TextDecoration.lineThrough:null,
+                        decoration: filterTask[index]['completed'] ? TextDecoration.lineThrough:null,
                       ),
                     ),
                       leading:Checkbox(
                           shape: CircleBorder(),
-                          value:tasks[index]['completed'] , 
+                          value:filterTask[index]['completed'] ,
                           onChanged:(value)=> _toggleTaskStatus(index)) ,
                       
                       
