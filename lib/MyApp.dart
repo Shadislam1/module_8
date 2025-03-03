@@ -7,6 +7,7 @@ import 'package:module_8/Module9class_2.dart';
 import 'package:module_8/Watertracker.dart';
 import 'package:module_8/module_12_class_1.dart';
 import 'package:module_8/module_12_class_2.dart';
+import 'package:module_8/module_12_class_3.dart';
 
 import 'Home.dart';
 import 'main.dart';
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        brightness: Brightness.dark,
+        brightness: Brightness.light,
         primaryColor: Colors.red,
         appBarTheme: AppBarTheme(
           color: Colors.blue,
@@ -36,7 +37,7 @@ class MyApp extends StatelessWidget {
 
       ),
       title: 'Ostaed Flutter app',
-      home:TodoScreen(),
+      home:Module12Class3(),
     );
   }
 }
