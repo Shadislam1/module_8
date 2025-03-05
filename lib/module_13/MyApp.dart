@@ -4,13 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:module_8/Calculatorapp.dart';
 import 'package:module_8/Module9class_1.dart';
 import 'package:module_8/Module9class_2.dart';
+import 'package:module_8/module_13/Module_13_class_1.dart';
 import 'package:module_8/Watertracker.dart';
 import 'package:module_8/module_12_class_1.dart';
 import 'package:module_8/module_12_class_2.dart';
 import 'package:module_8/module_12_class_3.dart';
 
-import 'Home.dart';
-import 'main.dart';
+import '../Home.dart';
+import '../main.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -37,7 +38,7 @@ class MyApp extends StatelessWidget {
 
       ),
       title: 'Ostaed Flutter app',
-      home:Module12Class3(),
+      home:Module13Class1(),
     );
   }
 }
